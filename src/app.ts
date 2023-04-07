@@ -8,10 +8,12 @@ const port = config.get<number>("port");
 
 const app = express();
 
+app.use(express.json());           // middleware that comes with express
+                                   // it will apply this middleware to every single route under this call (all routes defined in line 18)
 app.listen(port, async () => {
     logger.info(`App is running at http://localhost:${port}`); 
 
     await connect();
 
-    routes(app);
+    routes(app); 
 });
