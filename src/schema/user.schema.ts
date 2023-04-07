@@ -21,4 +21,4 @@ export const createUserSchema = object({ // definition for payload
     }),
 });
 
-export type CreateUserInput = TypeOf<typeof createUserSchema>;
+export type CreateUserInput = Omit<TypeOf<typeof createUserSchema>, "body.passwordConfirmation">;
