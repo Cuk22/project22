@@ -27,7 +27,7 @@ async function connect() {
         logger.error("Could not connect to db");
         process.exit(1);
     }
-    
+
 };
 
 export default connect;
