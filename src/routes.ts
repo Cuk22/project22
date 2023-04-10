@@ -2,7 +2,7 @@ import { Express, Request, Response } from "express";
 import { createUserHandler } from "./controller/user.controller";
 import validateResourse from "./middleware/valivateResourse";
 import { createUserSchema } from "./schema/user.schema";
-import { createUserSessionHandler } from "./controller/session.controller";
+import { createUserSessionHandler, getUserSessionsHandler } from "./controller/session.controller";
 import { createSessionSchema } from "./schema/session.schema";
 
 
@@ -13,6 +13,8 @@ function routes(app: Express) {
                                                                                      need to add middleware between path and handler to validate handler*/
 
     app.post("/api/sessions", validateResourse(createSessionSchema), createUserSessionHandler);
+
+    app.get("api/sessions", getUserSessionsHandler);
 
     };
 
