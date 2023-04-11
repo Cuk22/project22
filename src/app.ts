@@ -10,7 +10,7 @@ const port = config.get<number>("port");
 const app = express();
 
 app.use(express.json());           // middleware that comes with express
-// it will apply this middleware to every single route under this call (all routes defined in line 18)
+                                   // it will apply this middleware to every single route under this call (all routes defined in line 18)
 
 app.use(deserializeUser); // middleware getting called on every endpoint of every request
 
