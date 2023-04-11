@@ -18,7 +18,8 @@ export async function findSessions(query: FilterQuery<SessionDocument>) {
 }
 
 export async function updateSession(
-    query:FilterQuery<SessionDocument>, // find session we want to update
-    update: UpdateQuery<SessionDocument>) { // what we want to update session to
-    
-}
+    query: FilterQuery<SessionDocument>, // find session we want to update
+    update: UpdateQuery<SessionDocument> // what we want to update session to
+) { 
+    return SessionModel.updateOne(query, update);
+};
