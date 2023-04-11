@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { validatePassword } from "../services/user.service";
-import { createSession, findSessions } from "../services/session.service";
+import { createSession, findSessions, updateSession } from "../services/session.service";
 import { signJwt } from "../utils/jwt.utils";
 import config from "config";
 
@@ -37,7 +37,21 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 export async function getUserSessionsHandler(req: Request, res: Response){
     const userId = res.locals.user._id
 
-    const sessions = await findSessions({user: userId, valid: false});
+    const sessions = await findSessions({user: userId, valid: true});
 
     return res.send(sessions);
+};
+
+export async function deleteSessionHandler(req: Request, res: Response) {
+    const sessionId = res.locals.user.session // its safe to access this if we put the require user middleware in front of this handler
+
+    await updateSession({_id: sessionId }, { valid: false});
+    // not deleting session but set it to false
+    // user wont be able to use session if he tries
+
+    return res.send({
+        accessToken: null,
+        refreshToken: null,
+    });
+    
 };

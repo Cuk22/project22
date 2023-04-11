@@ -1,6 +1,6 @@
 export default{
     port: 1337,
-    dbUri: "mongodb+srv://Cuk22:Gandor33@cuk22.7xpv2cc.mongodb.net/?retryWrites=true&w=majority",
+    dbUri: "mongodb+srv://Cuk22:password@cuk22.7xpv2cc.mongodb.net/?retryWrites=true&w=majority",
     saltWorkFactor: 10,
     accessTokenTtl: "15m", // Ttl = time to live
     refreshTokenTtl: "1y", // without accessToken user would need to log in every 15m

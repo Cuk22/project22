@@ -4,6 +4,7 @@ import validateResourse from "./middleware/valivateResourse";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionHandler, getUserSessionsHandler } from "./controller/session.controller";
 import { createSessionSchema } from "./schema/session.schema";
+import requireUser from "./middleware/requireUser";
 
 
 function routes(app: Express) {
@@ -14,7 +15,7 @@ function routes(app: Express) {
 
     app.post("/api/sessions", validateResourse(createSessionSchema), createUserSessionHandler);
 
-    app.get("api/sessions", getUserSessionsHandler);
+    app.get("api/sessions", requireUser, getUserSessionsHandler);
 
     };
 
