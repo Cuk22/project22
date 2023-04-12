@@ -31,12 +31,12 @@ export async function updateSession(
 export async function reIssueAccessToken({ refreshToken }: {refreshToken: string}) {
     const { decoded } = verifyJwt(refreshToken) // decode refresh token to be sure its valid
 
-    if (!decoded || !get(decoded, '_id')) return false; /* if not decoded or dont have an id on decoded refresh token
+    if (!decoded || !get(decoded, 'session')) return false; /* if not decoded or dont have an id on decoded refresh token
      _id = session_id, need session id to make sure this session is still valid before we issue an access token
      return false if conditions are not met 
 */
 
-    const session = await SessionModel.findById(get(decoded, "_id")); // get session
+    const session = await SessionModel.findById(get(decoded, "session")); // get session
 
     if (!session || !session.valid) return false;
 
