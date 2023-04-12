@@ -8,7 +8,7 @@ const publicKey = config.get<string>("publicKey");
 export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {     // object = jwt payload
     // options? = optional parametars of object   
     return jwt.sign(object, privateKey, {
-        ...(options && options), // spread options here to provide an anlorith options                            
+        ...(options && options), // spread options here to provide an algorithm options                            
         algorithm: "RS256" // allow us to use private and public keys
     })
 }
