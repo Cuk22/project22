@@ -7,7 +7,7 @@ export async function createProductHandler(req: Request<{}, {}, createProductInp
 
     const body = req.body
 
-    const product = await createProduct({ ...body, user: userId })
+    const product = await createProduct({...body, user: userId})
 
     return res.send(product);
 };

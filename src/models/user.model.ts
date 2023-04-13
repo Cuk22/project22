@@ -2,10 +2,15 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import config from "config";
 
-export interface UserDocument extends mongoose.Document { // matching schemas (ts definition for userSchema)
+export interface UserInput { 
     email: string;
     name: string;
     password: string;
+
+}
+
+export interface UserDocument extends UserInput, mongoose.Document { // matching schemas (ts definition for userSchema)
+    
     createdAt: Date; // timestamps true
     updatedAt: Date;
     comparePassword(candidatePassword: string): Promise<boolean> //comparePassword method
